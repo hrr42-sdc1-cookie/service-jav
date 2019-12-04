@@ -3,14 +3,15 @@ const db = require('../db/index.js');
 mongoose.Promise = global.Promise;
 
 const overviewSchema = new mongoose.Schema({
+  id: Number,
   title: String,
   review: Number,
-  num_of_reviews: Number,
-  price_per_person_low: String,
-  price_per_person_high: String,
+  numOfReviews: Number,
+  pricePerPersonLow: String,
+  pricePerPersonHigh: String,
   category: String,
-  top_tags: [String],
-  description: String
+  topTags: [String],
+  description: String,
 });
 
 const Overview = mongoose.model('Overview', overviewSchema);

@@ -13,13 +13,14 @@ for (let i = 0; i < NUM_OF_SAMPLES; i++) {
     tags.push(faker.commerce.productAdjective());
   }
   let overview = new Overview({
+    id: i + 1,
     title: faker.company.companyName(),
     review: Math.floor(Math.random() * 6),
-    num_of_reviews: Math.floor(Math.random() * 10000),
-    price_per_person_low: Math.floor(Math.random() * 50),
-    price_per_person_high: 50 + Math.floor(Math.random() * 50),
+    numOfReviews: Math.floor(Math.random() * 10000),
+    pricePerPersonLow: Math.floor(Math.random() * 50),
+    pricePerPersonHigh: 50 + Math.floor(Math.random() * 50),
     category: categories[Math.floor(Math.random() * categories.length)],
-    top_tags: tags,
+    topTags: tags,
     description: faker.lorem.paragraph()
   });
   sampleOverviews.push(overview);
