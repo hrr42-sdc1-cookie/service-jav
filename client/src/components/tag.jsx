@@ -11,7 +11,11 @@ const tagStyle = {
   fontFamily: '"Trebuchet MS", Helvetica, sans-serif',
   fontSize: '16px',
   margin: '0px 0px 0px 10px',
-  padding: '5px 5px 15px 15px',
+  padding: '5px 20px 5px 20px',
+  borderStyle: 'solid',
+  borderColor: 'rgb(200,200,200)',
+  borderWidth: '0.8px',
+  borderRadius: '20px',
   display: 'inline-block',
 };
 

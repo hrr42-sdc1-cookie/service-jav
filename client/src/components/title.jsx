@@ -7,9 +7,9 @@ const titleStyle = {
   fontFamily: '"Trebuchet MS", Helvetica, sans-serif',
   fontSize: '24px',
   margin: '0px 0px 15px 0px',
-  padding: '0px 0px 30px 0px',
+  padding: '0px 0px 15px 0px',
   borderBottomStyle: 'solid',
-  borderColor: 'grey',
+  borderColor: 'rgb(200,200,200)',
   borderWidth: '0.8px',
 };
 
