@@ -2,12 +2,14 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import $ from 'jquery';
 
-import Title from './components/title.jsx';
+import Info from './components/info.jsx';
 import Review from './components/review.jsx';
+import Tag from './components/tag.jsx';
+import Description from './components/description.jsx';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       view: 'overview',
@@ -23,15 +25,14 @@ class App extends React.Component {
       dataType: 'json',
       contentType: 'application/json; charset=utf-8',
       success: function (data) {
-        console.log('GET request success! ===');
-        console.log('======');
-        console.log(data);
-
+        console.log('=== GET request success! ===');
         this.setState(state => ({
           _data: data,
         }));
+        console.log('New _data: ', this.state._data);
 
-        this.state.reviewStars = data.reviewStars;
+        // this.state.reviewStars = data.reviewStars;
+        // console.log('Stars: ', this.state.reviewStars);
       }.bind(this),
       error: function (xhr, status, err) {
         console.log(xhr, status);
@@ -44,8 +45,11 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Title title={this.state._data.title}/>
-        <Review state={this.state}/>
+        <h1>{this.state._data.title}</h1>
+        <Info info={this.state._data} />
+        <Tag tag={this.state._data} />
+        <Description description={this.state._data} />
+        {/* <Review state={this.state} /> */}
         {/* <div aria-label="4.7 out of 5 stars rating" role="img">
           <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
             <title>Star_8_</title>
