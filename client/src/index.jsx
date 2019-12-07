@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import $ from 'jquery';
 
+import Title from './components/title.jsx';
 import Info from './components/info.jsx';
 import Review from './components/review.jsx';
 import Tag from './components/tag.jsx';
@@ -45,7 +46,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>{this.state._data.title}</h1>
+        <Title title={this.state._data} />
         <Info info={this.state._data} />
         <Tag tag={this.state._data} />
         <Description description={this.state._data} />

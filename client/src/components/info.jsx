@@ -1,5 +1,11 @@
+const infoStyle = {
+  color: 'rgb(45, 51, 63)',
+  fontFamily: '"Trebuchet MS", Helvetica, sans-serif',
+  fontSize: '16px',
+};
+
 const Info = (props) => (
-  <div role="img">
+  <div className='info' style={infoStyle} role="img">
     {/* starEntry component goes to this component */}
 
     {/* The following line is NOT working
@@ -7,9 +13,9 @@ const Info = (props) => (
       <StarEntry starEntry={reviewStar} />
     ))} */}
 
-    <h2>{props.info.review + ' Reviews'}</h2>
-    <h2>{'$' + props.info.pricePerPersonLow + ' to $' + props.info.pricePerPersonHigh}</h2>
-    <h2>{props.info.category}</h2>
+    <p>{props.info.review + ' Reviews'}</p>
+    <p>{'$' + props.info.pricePerPersonLow + ' to $' + props.info.pricePerPersonHigh}</p>
+    <p>{props.info.category}</p>
   </div>
 );
 
