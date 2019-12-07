@@ -9,9 +9,8 @@ import Tag from './components/tag.jsx';
 import Description from './components/description.jsx';
 
 class App extends React.Component {
-  constructor() {
-    super();
-
+  constructor(props) {
+    super(props);
     this.state = {
       view: 'overview',
       _data: {},
@@ -27,13 +26,11 @@ class App extends React.Component {
       contentType: 'application/json; charset=utf-8',
       success: function (data) {
         console.log('=== GET request success! ===');
+        console.log(data);
         this.setState(state => ({
           _data: data,
+          reviewStars: data.reviewStars
         }));
-        console.log('New _data: ', this.state._data);
-
-        // this.state.reviewStars = data.reviewStars;
-        // console.log('Stars: ', this.state.reviewStars);
       }.bind(this),
       error: function (xhr, status, err) {
         console.log(xhr, status);
@@ -46,7 +43,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Title title={this.state._data} />
+        <Title title={this.state._data}/>
+        <Review state={this.state}/>
         <Info info={this.state._data} />
         <Tag tag={this.state._data} />
         <Description description={this.state._data} />

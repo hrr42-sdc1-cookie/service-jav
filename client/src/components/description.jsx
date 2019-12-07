@@ -5,10 +5,15 @@ const descriptionStyle = {
 };
 
 const Description = (props) => (
-  <div className="description" style={descriptionStyle}>
-    <p>{props.description.description}</p>
-    {/* does 'read more' button goes to this component? */}
-  </div>
+  props.description.description !== undefined ?
+    <div className="description" style={descriptionStyle}>
+      {props.description.description.split('\n').map((paragraph, idx) => (
+        <p key={idx}>{paragraph}</p>
+      ))}
+      {/* does 'read more' button goes to this component? */}
+    </div>
+    :
+    <div className="post loading">Loading...</div>
 );
 
 export default Description;

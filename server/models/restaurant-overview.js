@@ -6,6 +6,7 @@ const overviewSchema = new mongoose.Schema({
   id: Number,
   title: String,
   review: Number,
+  reviewStars: [Number],
   numOfReviews: Number,
   pricePerPersonLow: String,
   pricePerPersonHigh: String,
