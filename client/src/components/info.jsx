@@ -1,8 +1,20 @@
 const infoStyle = {
   color: 'rgb(45, 51, 63)',
   fontFamily: '"Trebuchet MS", Helvetica, sans-serif',
+  margin: '0px 0px 15px 0px',
   fontSize: '16px',
   // display: 'inline-block',
+};
+
+const divStyle = {
+  width: '150px',
+  fontWeight: 'bold',
+  display: 'inline-block',
+};
+
+const innerDivStyle = {
+  margin: '2px',
+  display: 'inline-block',
 };
 
 const Info = (props) => (
@@ -14,8 +26,8 @@ const Info = (props) => (
         <StarEntry starEntry={reviewStar} />
       ))} */}
 
-    <div style={{display: 'inline-block'}}>
-      <div style={{display: 'inline-block'}}>
+    <div style={divStyle}>
+      <div style={innerDivStyle}>
         <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
           <title>icon/ic_review</title>
           <desc>Created with Sketch.</desc>
@@ -28,11 +40,11 @@ const Info = (props) => (
           </g>
         </svg>
       </div>
-      <div style={{display: 'inline-block'}}>{props.info.numOfReviews + ' Reviews'}</div>
+      <div style={innerDivStyle}>{props.info.numOfReviews + ' Reviews'}</div>
     </div>
 
-    <div style={{display: 'inline-block'}}>
-      <div style={{display: 'inline-block'}}>
+    <div style={divStyle}>
+      <div style={innerDivStyle}>
         <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
           <title>icon/ic_price_range</title>
           <desc>Created with Sketch.</desc>
@@ -50,11 +62,11 @@ const Info = (props) => (
           </g>
         </svg>
       </div>
-      <div style={{display: 'inline-block'}}>{'$' + props.info.pricePerPersonLow + ' to $' + props.info.pricePerPersonHigh}</div>
+      <div style={innerDivStyle}>{'$' + props.info.pricePerPersonLow + ' to $' + props.info.pricePerPersonHigh}</div>
     </div>
 
-    <div style={{display: 'inline-block'}}>
-      <div style={{display: 'inline-block'}}>
+    <div style={divStyle}>
+      <div style={innerDivStyle}>
         <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
           <title>icon/ic_cuisine</title>
           <desc>Created with Sketch.</desc>
@@ -70,7 +82,7 @@ const Info = (props) => (
           </g>
         </svg>
       </div>
-      <div style={{display: 'inline-block'}}>{props.info.category}</div>
+      <div style={innerDivStyle}>{props.info.category}</div>
     </div>
   </div>
 );

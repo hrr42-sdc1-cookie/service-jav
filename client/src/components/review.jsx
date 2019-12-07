@@ -1,4 +1,3 @@
-import React from 'react';
 import StarEntry from './starEntry.jsx';
 
 const Review = (props) => (
