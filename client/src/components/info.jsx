@@ -1,6 +1,7 @@
 const infoStyle = {
   color: 'rgb(45, 51, 63)',
   fontFamily: '"Trebuchet MS", Helvetica, sans-serif',
+  // fontFamily: '"Josefin Sans", serif',
   margin: '0px 0px 15px 0px',
   fontSize: '16px',
   display: 'inline-block',

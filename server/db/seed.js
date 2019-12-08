@@ -13,14 +13,23 @@ for (let i = 0; i < NUM_OF_SAMPLES; i++) {
     tags.push(faker.commerce.productAdjective());
   }
 
-  let review = ((Math.random() * 2) + 3).toFixed(1);
+  let review = Math.round(((Math.random() * 2) + 3) * 10) / 10;
   let reviewStars = [];
-  for (let k = 0; k < review; k++) {
+  for (let k = 0; k < review - 1; k++) {
     reviewStars.push(1);
   }
-  if ((review - Math.floor(review)) >= 0.5) {
+
+  if (Number.isInteger(review)) {
+    reviewStars.push(1);
+  } else if ((review - Math.floor(review)) >= 0.5) {
     reviewStars.push(0);
   }
+
+  // if ((review - Math.floor(review)) >= 0.5) {
+  //   reviewStars.push(0);
+  // } else if (review === Math.floor(review)) {
+  //   reviewStars.push(1);
+  // }
 
   let overview = new Overview({
     id: i + 1,

@@ -1,7 +1,9 @@
 const descriptionStyle = {
   color: 'rgb(45, 51, 63)',
   fontFamily: '"Trebuchet MS", Helvetica, sans-serif',
-  fontSize: '16px',
+  // fontFamily: '"Josefin Sans", serif',
+  fontWeight: '400',
+  fontSize: '18px',
 };
 
 const Description = (props) => (

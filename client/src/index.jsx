@@ -17,7 +17,7 @@ class App extends React.Component {
       reviewStars: [],
       topTags: [],
       // ID is hard coded for now
-      _id: 99,
+      _id: 20,
     };
 
     $.ajax({

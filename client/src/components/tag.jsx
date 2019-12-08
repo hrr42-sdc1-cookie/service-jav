@@ -1,6 +1,7 @@
 const style = {
   color: 'rgb(45, 51, 63)',
   fontFamily: '"Trebuchet MS", Helvetica, sans-serif',
+  // fontFamily: '"Josefin Sans", serif',
   fontSize: '20px',
   margin: '2px 0px 0px 0px',
   display: 'inline-block',
@@ -9,6 +10,7 @@ const style = {
 const tagStyle = {
   color: 'rgb(45, 51, 63)',
   fontFamily: '"Trebuchet MS", Helvetica, sans-serif',
+  // fontFamily: '"Josefin Sans", serif',
   fontSize: '16px',
   margin: '0px 0px 0px 10px',
   padding: '5px 20px 5px 20px',

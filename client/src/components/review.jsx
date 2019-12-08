@@ -3,6 +3,7 @@ import StarEntry from './starEntry.jsx';
 const textStyle = {
   color: 'rgb(45, 51, 63)',
   fontFamily: '"Trebuchet MS", Helvetica, sans-serif',
+  // fontFamily: '"Josefin Sans", serif',
   fontSize: '16px',
   fontWeight: 'bold',
   padding: '5px 10px 5px 10px',
