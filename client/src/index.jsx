@@ -17,7 +17,7 @@ class App extends React.Component {
       reviewStars: [],
       topTags: [],
       // ID is hard coded for now
-      _id: 1,
+      _id: 99,
     };
 
     $.ajax({
@@ -46,10 +46,10 @@ class App extends React.Component {
     return (
       <div>
         <Title title={this.state._data} />
-        {/* <div style={{display: 'inline-block'}}> */}
-        <Review state={this.state}/>
-        <Info info={this.state._data} />
-        {/* </div> */}
+        <div>
+          <Review review={this.state} />
+          <Info info={this.state._data} />
+        </div>
         <Tag tag={this.state} />
         <Description description={this.state._data} />
       </div>

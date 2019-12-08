@@ -13,9 +13,9 @@ for (let i = 0; i < NUM_OF_SAMPLES; i++) {
     tags.push(faker.commerce.productAdjective());
   }
 
-  let review = Math.floor(Math.random() * 6);
+  let review = ((Math.random() * 2) + 3).toFixed(1);
   let reviewStars = [];
-  for (let i = 0; i < review; i++) {
+  for (let k = 0; k < review; k++) {
     reviewStars.push(1);
   }
   if ((review - Math.floor(review)) >= 0.5) {
@@ -25,7 +25,7 @@ for (let i = 0; i < NUM_OF_SAMPLES; i++) {
   let overview = new Overview({
     id: i + 1,
     title: faker.company.companyName(),
-    review: Math.floor(Math.random() * 6),
+    review: review,
     reviewStars: reviewStars,
     numOfReviews: Math.floor(Math.random() * 10000),
     pricePerPersonLow: Math.floor(Math.random() * 50),

@@ -3,7 +3,7 @@ const infoStyle = {
   fontFamily: '"Trebuchet MS", Helvetica, sans-serif',
   margin: '0px 0px 15px 0px',
   fontSize: '16px',
-  // display: 'inline-block',
+  display: 'inline-block',
 };
 
 const divStyle = {
