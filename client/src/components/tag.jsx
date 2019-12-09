@@ -21,11 +21,14 @@ const tagStyle = {
   display: 'inline-block',
 };
 
+// add this in html:
+// <link rel="stylesheet" type="text/css" href="client/dist/style.css">
+
 const Tag = (props) => (
   <div className="tag">
     <div style={style}>Top Tags: </div>
     {props.tag.topTags.map((topTag, idx) => (
-      <div key={idx} style={tagStyle}>{topTag}</div>
+      <div className="singleTag" key={idx} style={tagStyle}>{topTag}</div>
     ))}
   </div>
 );
