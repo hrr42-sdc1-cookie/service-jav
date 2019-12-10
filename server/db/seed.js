@@ -12,16 +12,36 @@ for (let i = 0; i < NUM_OF_SAMPLES; i++) {
   for (let j = 0; j < NUM_OF_TAGS; j++) {
     tags.push(faker.commerce.productAdjective());
   }
+
+  let review = Math.round(((Math.random() * 2) + 3) * 10) / 10;
+  let reviewStars = [];
+  for (let k = 0; k < review - 1; k++) {
+    reviewStars.push(1);
+  }
+
+  if (Number.isInteger(review)) {
+    reviewStars.push(1);
+  } else if ((review - Math.floor(review)) >= 0.5) {
+    reviewStars.push(0);
+  }
+
+  // if ((review - Math.floor(review)) >= 0.5) {
+  //   reviewStars.push(0);
+  // } else if (review === Math.floor(review)) {
+  //   reviewStars.push(1);
+  // }
+
   let overview = new Overview({
     id: i + 1,
     title: faker.company.companyName(),
-    review: Math.floor(Math.random() * 6),
+    review: review,
+    reviewStars: reviewStars,
     numOfReviews: Math.floor(Math.random() * 10000),
     pricePerPersonLow: Math.floor(Math.random() * 50),
     pricePerPersonHigh: 50 + Math.floor(Math.random() * 50),
     category: categories[Math.floor(Math.random() * categories.length)],
     topTags: tags,
-    description: faker.lorem.paragraph()
+    description: faker.lorem.paragraphs()
   });
   sampleOverviews.push(overview);
 }
