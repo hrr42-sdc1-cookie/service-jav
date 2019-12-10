@@ -12,6 +12,7 @@ app.use(express.static(__dirname + '/../client/dist'));
 
 app.get('/api/restaurant/:restaurantId', (req, res) => {
   let id = req.params.restaurantId;
+  console.log('id = ', id);
   overviewDAO.fetchById(id)
     .then(overview => {
       res.json(overview);
