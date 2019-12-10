@@ -8,8 +8,9 @@ import Review from './components/review.jsx';
 import Tag from './components/tag.jsx';
 import Description from './components/description.jsx';
 
-// let params = (new URL(document.location)).searchParams;
-// let restaurantid = parseInt(params.get('restaurantid')) || 1;
+let params = (new URL(document.location)).searchParams;
+let restaurantid = parseInt(params.get('restaurantid')) || 1;
+console.log('restaurantid = ', restaurantid);
 
 class App extends React.Component {
   constructor(props) {
@@ -19,13 +20,13 @@ class App extends React.Component {
       _data: {},
       reviewStars: [],
       topTags: [],
-      // ID is hard coded for now
-      _id: 20,
+      _id: restaurantid,
     };
 
     $.ajax({
       type: 'GET',
-      url: '/api/restaurant/' + this.state._id,
+      // url: '/api/restaurant/' + this.state._id,
+      url: `/api/restaurant/${restaurantid}`,
       dataType: 'json',
       contentType: 'application/json; charset=utf-8',
       success: function (data) {
