@@ -8,6 +8,9 @@ import Review from './components/review.jsx';
 import Tag from './components/tag.jsx';
 import Description from './components/description.jsx';
 
+// let params = (new URL(document.location)).searchParams;
+// let restaurantid = parseInt(params.get('restaurantid')) || 1;
+
 class App extends React.Component {
   constructor(props) {
     super(props);

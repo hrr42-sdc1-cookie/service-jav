@@ -11,12 +11,12 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/../client/dist'));
 
 app.get('/api/restaurant/:restaurantId', (req, res) => {
-    let id = req.params.restaurantId;
-    overviewDAO.fetchById(id)
-      .then(overview => {
-        res.json(overview);
-      },
-      () => res.status(500).send('Internal error!'));
+  let id = req.params.restaurantId;
+  overviewDAO.fetchById(id)
+    .then(overview => {
+      res.json(overview);
+    },
+    () => res.status(500).send('Internal error!'));
 });
 
 module.exports = app;
