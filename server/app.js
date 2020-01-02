@@ -39,8 +39,7 @@ app.put('/api/restaurant/:restaurantId', (req, res) => {
 });
 
 // CREATE
-app.post('/api/restaurant/:restaurantId', (req, res) => {
-  let id = req.params.restaurantId;
+app.post('/api/restaurant/', (req, res) => {
   overviewDAO.createNew(req.body)
     .then(overview => {
       res.json(overview);
