@@ -17,6 +17,7 @@ app.use((req, res, next) => {
   next();
 });
 
+// READ
 app.get('/api/restaurant/:restaurantId', (req, res) => {
   let id = req.params.restaurantId;
   console.log('id = ', id);
@@ -26,5 +27,36 @@ app.get('/api/restaurant/:restaurantId', (req, res) => {
     },
     () => res.status(500).send('Internal error!'));
 });
+
+// UPDATE
+app.put('/api/restaurant/:restaurantId', (req, res) => {
+  let id = req.params.restaurantId;
+  overviewDAO.updateById(id, req.body)
+    .then(overview => {
+      res.json(overview);
+    },
+    () => res.status(500).send('Internal error!'));
+});
+
+// CREATE
+app.post('/api/restaurant/:restaurantId', (req, res) => {
+  let id = req.params.restaurantId;
+  overviewDAO.createNew(req.body)
+    .then(overview => {
+      res.json(overview);
+    },
+    () => res.status(500).send('Internal error!'));
+});
+
+// DELETE
+app.delete('/api/restaurant/:restaurantId', (req, res) => {
+  let id = req.params.restaurantId;
+  overviewDAO.deleteById(id)
+    .then(overview => {
+      res.json(overview);
+    },
+    () => res.status(500).send('Internal error!'));
+});
+
 
 module.exports = app;

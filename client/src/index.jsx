@@ -25,8 +25,8 @@ class App extends React.Component {
 
     $.ajax({
       type: 'GET',
-      // url: '/api/restaurant/' + this.state._id,
-      url: `http://ec2-3-83-131-31.compute-1.amazonaws.com:3001/api/restaurant/${restaurantid}`,
+      url: '/api/restaurant/' + this.state._id,
+      // url: `http://ec2-3-83-131-31.compute-1.amazonaws.com:3001/api/restaurant/${restaurantid}`,
       dataType: 'json',
       contentType: 'application/json; charset=utf-8',
       success: function (data) {
