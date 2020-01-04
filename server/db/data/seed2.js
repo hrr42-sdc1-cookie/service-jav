@@ -23,7 +23,7 @@ const csvWriter = createCsvWriter({
 const records = [];
 let id = 0
 let idArray = [];
-for (let i = 1; i < 1000001; i += 100000){
+for (let i = 1; i < 10000001; i += 100000){
   idArray.push(i);
 }
 const generate = (start) => {
