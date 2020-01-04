@@ -11,7 +11,8 @@
     "start": "nodemon server/index.js",
     "db:setup": "node server/db/seed.js",
     "build": "webpack -d --watch",
-    "test": "jest --runInBand --coverage"
+    "test": "jest --runInBand --coverage",
+    "seed": "node server/db/data/seed2.js"
   },
   "dependencies": {
     "@babel/core": "^7.7.4",
@@ -19,7 +20,9 @@
     "@babel/preset-react": "^7.7.4",
     "babel-loader": "^8.0.6",
     "body-parser": "^1.19.0",
+    "cli-progress": "^3.4.0",
     "cors": "^2.8.5",
+    "csv-writer": "^1.5.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
     "express": "^4.17.1",
     "faker": "^4.1.0",
