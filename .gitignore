@@ -24,3 +24,7 @@ coverage
 build/
 dist/
 
+#CSV Files
+test10M.csv
+test200k.csv
+data10m.csv

@@ -6,6 +6,8 @@ const overviewDAO = require('./db/overviewDAO.js');
 
 const app = express();
 
+const cassandra = require('./db/cassandra/index.js');
+
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -19,43 +21,70 @@ app.use((req, res, next) => {
 
 // READ
 app.get('/api/restaurant/:restaurantId', (req, res) => {
-  let id = req.params.restaurantId;
-  console.log('id = ', id);
-  overviewDAO.fetchById(id)
-    .then(overview => {
-      res.json(overview);
-    },
-    () => res.status(500).send('Internal error!'));
+  const id = req.params.restaurantId;
+
+  const query = `SELECT * FROM overviews WHERE id=${id}`;
+  client.execute(query)
+    .then(result => res.status(200).send(result.rows[0]))
+    .catch(err => {
+      console.log(err);
+      res.status(404).end();
+    });
 });
 
 // UPDATE
 app.put('/api/restaurant/:restaurantId', (req, res) => {
-  let id = req.params.restaurantId;
-  overviewDAO.updateById(id, req.body)
-    .then(overview => {
-      res.json(overview);
-    },
-    () => res.status(500).send('Internal error!'));
+  const data = req.body;
+  const id = req.params.restaurantId;
+  const query = `UPDATE overviews SET title=?,review=?,reviewStars=?,numOfReviews=?,pricePerPersonLow=?,pricePerPersonHigh=?,category=?,topTags=?,"description"=? WHERE id=${id}`;
+  client.execute(query, [data.title, data.review, data.reviewStars, data.numOfReviews, data.pricePerPersonLow, data.pricePerPersonHigh, data.category, data.topTags, data.description], { prepare: true })
+    .then(result => res.status(201).send('restaurant updated'))
+    .catch(err => {
+      console.log(err);
+      res.status(404).end();
+    });
 });
 
 // CREATE
 app.post('/api/restaurant/:restaurantId', (req, res) => {
-  let id = req.params.restaurantId;
-  overviewDAO.createNew(req.body)
-    .then(overview => {
-      res.json(overview);
-    },
-    () => res.status(500).send('Internal error!'));
+  const data = req.body;
+  const query = `INSERT INTO overviews(id,title,review,reviewStars,numOfReviews,pricePerPersonLow,pricePerPersonHigh,category,topTags,"description") VALUES (?,?,?,?,?,?,?,?,?,?)`;
+  client.execute(query, data, { prepare: true })
+    .then(result => res.status(201).send('restaurant inserted'))
+    .catch(err => {
+      console.log(err);
+      res.status(400).end();
+    });
 });
 
 // DELETE
 app.delete('/api/restaurant/:restaurantId', (req, res) => {
-  let id = req.params.restaurantId;
-  overviewDAO.deleteById(id)
-    .then(overview => {
-      res.json(overview);
-    },
-    () => res.status(500).send('Internal error!'));
+  const id = req.params.restaurantId;
+  const query = `DELETE FROM overviews WHERE id=${id}`;
+  client.execute(query)
+    .then(result => res.status(200).send('restaurant deleted'))
+    .catch(err => {
+      console.log(err);
+      res.status(404).end();
+    });
+});
+
+
+//route for stress test
+app.post('/stress/restaurant/:restaurantId', (req, res) => {
+  const data = req.body;
+  data.id = req.params.restaurantId;
+
+  const query = `INSERT INTO overviews(id,title,review,reviewStars,numOfReviews,pricePerPersonLow,pricePerPersonHigh,category,topTags,"description") VALUES (?,?,?,?,?,?,?,?,?,?)`;
+  // console.log(data);
+
+  client.execute(query, data, { prepare: true })
+    .then(result => res.status(201).send('restaurant inserted'))
+    .catch(err => {
+      console.log(err);
+      res.status(400).end();
+    })
+    .then(() => client.execute(`DELETE FROM overviews WHERE id=${data.id}`));
 });
 
 
