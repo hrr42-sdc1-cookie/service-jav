@@ -1,11 +1,13 @@
 const fs = require('fs');
 const faker = require('faker');
+const path = require('path');
 const categories = require('../categories.json');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 const cliProgress = require('cli-progress');
 
 const csvWriter = createCsvWriter({
-  path: './server/db/data/data50k.csv',
+  path: path.resolve(__dirname, 'data10M.csv'),
+  // './server/db/data/data50k.csv',
   header: [
       {id: 'id', title: 'ID'},
       {id: 'title', title: 'Title'},
@@ -23,7 +25,7 @@ const csvWriter = createCsvWriter({
 const records = [];
 let id = 0
 let idArray = [];
-for (let i = 1; i < 50001; i += 50000){
+for (let i = 1; i < 10000001; i += 100000){
   idArray.push(i);
 }
 const generate = (start) => {
@@ -42,14 +44,14 @@ const generate = (start) => {
     // Creates 1 new record
     records.push({
       id: start,
-      title: toString(faker.random.words()),
+      title: faker.random.words(),
       review: review,
-      reviewStars: reviewStars,
+      reviewStars: "{" + reviewStars + "}",
       numOfReviews: Math.floor(Math.random() * 10000),
       pricePerPersonLow: Math.floor(Math.random() * 50),
       pricePerPersonHigh: 50 + Math.floor(Math.random() * 50),
-      category: categories[Math.floor(Math.random() * categories.length)],
-      topTags: `${faker.commerce.productAdjective()}, ${faker.commerce.productAdjective()}, ${faker.commerce.productAdjective()}`,
+      category: "{" + categories[Math.floor(Math.random() * categories.length)] + "}",
+      topTags: "{" + `${faker.commerce.productAdjective()}, ${faker.commerce.productAdjective()}, ${faker.commerce.productAdjective()}` + "}",
       description: faker.lorem.sentences(Math.random() * 4 + 2)
     });
     start++
@@ -64,7 +66,8 @@ const write = async () => {
         .then(() => {
             let val = i+1
             console.log(`${Math.floor(val/idArray.length * 100)}%`);
-        });
+        }).
+        catch((err) => console.log(err))
     }
   }
 write();
